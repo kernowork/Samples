@@ -1,6 +1,6 @@
 # Samples
 
-A collection of Lightning Web Components
+A collection of Lightning Web Components. (viewSource is adapted from  https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/viewSource )
 
 ## Tip Calculator
 
