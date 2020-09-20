@@ -33,3 +33,10 @@ Thumbs.db
 ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+
+.sfdx
+.vscode
+.DS_Store
+force-app/.DS_Store
+force-app/main/.DS_Store
+force-app/main/default/profiles
