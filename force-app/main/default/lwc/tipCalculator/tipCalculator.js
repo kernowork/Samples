@@ -40,4 +40,15 @@ export default class TipCalculator extends LightningElement {
         this.totalAmount = this.amount * 1.0 + this.tipAmount;
         this.eachAmount = this.totalAmount / this.numParty;
     }
+
+    handleReset() {
+        this.tipRate = 0.0;
+        this.customValue = false;
+        this.amount = 0.0;
+        this.tipAmount = 0.0;
+        this.totalAmount = 0.0;
+        this.numParty = 1;
+        this.eachAmount = 0.0;
+    }
+
 }

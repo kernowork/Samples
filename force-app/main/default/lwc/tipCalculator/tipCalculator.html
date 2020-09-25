@@ -2,12 +2,12 @@
     <lightning-card title="Tip Calculator" icon-name="utility:money">
         <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-top">
             <div class="slds-col slds-size_1-of-3 slds-text-heading_large slds-p-horizontal_small">
-                <lightning-input type="number" name="amount" label="Bill" value="0.00" formatter="currency" step="0.01"
+                <lightning-input type="number" name="amount" label="Bill" value={amount} formatter="currency" step="0.01"
                     onchange={handleAmount}>
                 </lightning-input>
             </div>
             <div class="slds-col slds-size_1-of-3 slds-text-heading_large slds-p-horizontal_small">
-                <lightning-input type="number" name="numParty" label="Number in Party" value="1"
+                <lightning-input type="number" name="numParty" label="Number in Party" value={numParty}
                     onchange={handleNumParty}>
                 </lightning-input>
             </div>
@@ -22,6 +22,8 @@
                 <lightning-button variant="brand-outline" label="20 percent" value="0.20" onclick={handleClick}
                     class="slds-m-left_x-small"></lightning-button>
                 <lightning-button variant="brand-outline" label="Custom" value="0.00" onclick={handleCustomClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand-outline" label="Reset" value="-99" onclick={handleReset}
                     class="slds-m-left_x-small"></lightning-button>
             </div>
 
