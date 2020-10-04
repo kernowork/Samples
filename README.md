@@ -10,7 +10,7 @@ Applies a tip (10%, 15%, 20%, or custom) to a bill and splits total amongst part
 
 Same as Tip Calculator, but publishes to a message channel via Lightning Message Service.
 
-## Tip Reaction
+## Tip Reaction LMS
 
 Receives the tip rate from tipCalculatorLMS via Lightning Message Service (Tip.messageChannel-meta.xml) and displays a reaction:
 * less than 13 percent = 'Oh, you have got to be kidding me!'
@@ -18,7 +18,8 @@ Receives the tip rate from tipCalculatorLMS via Lightning Message Service (Tip.m
 * greater than 19 percent = 'Thank you so much!'
 
 
-NOTE: LMS doesn't support Lightning Communities. Tip Calculator has the LMS code commented out in order to display on a Communities page
+NOTE: LMS doesn't support Lightning Communities. 
+
 
 
 
