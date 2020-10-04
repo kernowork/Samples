@@ -2,7 +2,7 @@ import { LightningElement, wire } from 'lwc';
 import { subscribe, unsubscribe, MessageContext } from 'lightning/messageService';
 import TIPMC from '@salesforce/messageChannel/Tip__c';
 
-export default class TipReaction extends LightningElement {
+export default class TipReactionLMS extends LightningElement {
     @wire(MessageContext)
     messageContext;
 
