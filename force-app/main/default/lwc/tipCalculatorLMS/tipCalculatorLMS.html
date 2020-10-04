@@ -1,0 +1,79 @@
+<template>
+    <lightning-card title="Tip Calculator LMS" icon-name="utility:money">
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-top">
+            <div class="slds-col slds-size_1-of-3 slds-text-heading_large slds-p-horizontal_small">
+                <lightning-input type="number" name="amount" label="Bill" value={amount} formatter="currency" step="0.01"
+                    onchange={handleAmount}>
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-3 slds-text-heading_large slds-p-horizontal_small">
+                <lightning-input type="number" name="numParty" label="Number in Party" value={numParty}
+                    onchange={handleNumParty}>
+                </lightning-input>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+            <div class="slds-p-horizontal_small slds-p-top_large">
+                <lightning-button variant="brand-outline" label="10 percent" value="0.10" onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand-outline" label="15 percent" value="0.15" onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand-outline" label="20 percent" value="0.20" onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand-outline" label="Custom" value="0.00" onclick={handleCustomClick}
+                    class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand-outline" label="Reset" value="-99" onclick={handleReset}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+
+        </div>
+        <template if:true={customValue}>
+            <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+                <div class="slds-col slds-size_1-of-3 slds-text-heading_medium slds-p-horizontal_small">
+                    <lightning-input type="number" name="othertip" label="Custom Tip" value="0.00" formatter="percent"
+                        step="0.01" onchange={handleCustomTip}></lightning-input>
+                </div>
+            </div>
+        </template>
+
+        <div class="slds-grid slds-grid_align-center">
+            <div class="slds-col slds-size_1-of-2 slds-text-heading_medium slds-align_absolute-center slds-p-horizontal_small slds-p-top_large">
+                <p>Tip Rate: <lightning-formatted-number value={tipRate} format-style="percent">
+                    </lightning-formatted-number>
+                </p>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-text-heading_medium slds-align_absolute-center slds-p-horizontal_small slds-p-top_large">
+                <p>Tip Amount: <lightning-formatted-number value={tipAmount} format-style="currency"
+                        currency-code="USD">
+                    </lightning-formatted-number>
+                </p>
+            </div>
+        </div>
+
+        <div class="slds-p-horizontal_small slds-p-top_large">
+            <div class="slds-box slds-theme_shade ">
+                <div class="slds-grid slds-grid_align-center">
+                    <div class="slds-col slds-size_1-of-2 slds-text-heading_large slds-align_absolute-center slds-p-horizontal_small">
+                        <p>Total Due: <lightning-formatted-number value={totalAmount} format-style="currency"
+                                currency-code="USD">
+                            </lightning-formatted-number>
+                        </p>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-text-heading_large slds-align_absolute-center slds-p-horizontal_small">
+                        <p>Split: <lightning-formatted-number value={eachAmount} format-style="currency" currency-code="USD">
+                            </lightning-formatted-number>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <c-view-source source="lwc/tipCalculatorLMS" slot="footer">
+            Use SLDS styling in markup. Handle button-clicks and input changes.
+            Publishes to LMS channel
+        </c-view-source>
+
+    </lightning-card>
+
+</template>
