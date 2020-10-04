@@ -1,4 +1,6 @@
-import { LightningElement, track} from 'lwc';
+import { LightningElement, wire} from 'lwc';
+import { publish, MessageContext } from 'lightning/messageService';
+import TIPMC from '@salesforce/messageChannel/Tip__c';
 
 export default class TipCalculator extends LightningElement {
     tipRate = 0.0;
@@ -8,6 +10,9 @@ export default class TipCalculator extends LightningElement {
     totalAmount = 0.0;
     numParty = 1;
     eachAmount = 0.0;
+
+    @wire(MessageContext)
+    messageContext;
 
     handleAmount(event) {
         this.amount = event.target.value;
@@ -23,6 +28,7 @@ export default class TipCalculator extends LightningElement {
         this.customValue = false;
         this.tipRate= event.target.value;
         this.computeAmounts();
+        this.handleMessage();
     }
 
     handleCustomClick(event) {
@@ -32,6 +38,14 @@ export default class TipCalculator extends LightningElement {
     handleCustomTip(event) {
         this.tipRate = event.target.value;
         this.computeAmounts();
+        this.handleMessage();
+    }
+
+    handleMessage() {
+        const message = {
+            amount: this.amount,
+            tipRate: this.tipRate};
+        publish(this.messageContext, TIPMC, message);
     }
 
     computeAmounts() {
@@ -49,6 +63,7 @@ export default class TipCalculator extends LightningElement {
         this.totalAmount = 0.0;
         this.numParty = 1;
         this.eachAmount = 0.0;
+        this.handleMessage();
     }
 
 }
