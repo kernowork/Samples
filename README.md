@@ -17,8 +17,11 @@ Receives the tip rate from tipCalculatorLMS via Lightning Message Service (Tip.m
 * greater/equal 13 percent and less/equal 19 percent = 'Surely you can do better than that...'
 * greater than 19 percent = 'Thank you so much!'
 
-
 NOTE: LMS doesn't support Lightning Communities. 
+
+## Tip Calculator PubSub and Tip Reaction PubSub
+
+Same as the LMS version pair, but use the pubsub module to communicate 
 
 
 
