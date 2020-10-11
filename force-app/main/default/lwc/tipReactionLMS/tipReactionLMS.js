@@ -16,6 +16,10 @@ export default class TipReactionLMS extends LightningElement {
         this.subscribeMC();
     }
 
+    disconnectedCallback() {
+        this.unsubscribeMC();
+    }
+
     subscribeMC() {
         if (this.subscription) {
             return;
@@ -25,6 +29,11 @@ export default class TipReactionLMS extends LightningElement {
             TIPMC, (message) => {
                 this.handleMessage(message);
             });
+    }
+
+    unsubscribeMC() {
+        unsubscribe(this.subscription);
+        this.subscription = null;
     }
 
     handleMessage(message) {

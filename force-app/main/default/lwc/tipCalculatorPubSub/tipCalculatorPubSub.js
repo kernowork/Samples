@@ -1,6 +1,10 @@
-import { LightningElement} from 'lwc';
+import { LightningElement, wire} from 'lwc';
+import { CurrentPageReference } from 'lightning/navigation';
+import { fireEvent } from 'c/pubsub';
 
-export default class TipCalculator extends LightningElement {
+export default class TipCalculatorPubSub extends LightningElement {
+    @wire(CurrentPageReference) pageRef;
+
     tipRate = 0.0;
     customValue = false;
     amount = 0.0;
@@ -23,6 +27,7 @@ export default class TipCalculator extends LightningElement {
         this.customValue = false;
         this.tipRate= event.target.value;
         this.computeAmounts();
+        this.sendTipRate();
     }
 
     handleCustomClick(event) {
@@ -32,6 +37,7 @@ export default class TipCalculator extends LightningElement {
     handleCustomTip(event) {
         this.tipRate = event.target.value;
         this.computeAmounts();
+        this.sendTipRate();
     }
 
     computeAmounts() {
@@ -49,6 +55,13 @@ export default class TipCalculator extends LightningElement {
         this.totalAmount = 0.0;
         this.numParty = 1;
         this.eachAmount = 0.0;
+        this.sendTipRate();
+    }
+
+    sendTipRate() {
+        // const tipEvent = new CustomEvent('tipevent', { bubbles: true, detail: this.tipRate, composed:true});
+        // this.dispatchEvent(tipEvent);
+        fireEvent(this.pageRef, 'tipEvent', { tipRate: this.tipRate, amount: this.amount});
     }
 
 }
